@@ -1,0 +1,26 @@
+<%- include('header') -%>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4 text-center">
+            <h1 class="mb-4 mt-3">
+                IoT Greenhouse
+            </h1>
+            <form method="POST">
+                <div class="mb-3">
+                    <input type="text" class="form-control" placeholder="username" id="user" name="username">
+                </div>
+                <div class="mb-3">
+                    <input type="password" class="form-control" placeholder="password" id="pass" name="password">
+                </div>
+                <% if (typeof error !== 'undefined') { %>
+                    <div class="alert alert-danger"><%= error %></div>
+                <% } %>
+                <div>
+                    <!--<input type=submit class="btn btn-success" value="Login"/>-->
+                    <a class="btn btn-success" href="/dashboard" role="button">Login</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<%- include('footer') -%>
