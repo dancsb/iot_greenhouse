@@ -12,6 +12,21 @@ module.exports = function(app) {
     );
 
     app.get(
+        '/greeneries',
+        renderMW('greeneries')
+    );
+
+    app.get(
+        '/users',
+        renderMW('users')
+    );
+
+    app.get(
+        '/logs',
+        renderMW('logs')
+    );
+
+    app.get(
         '/logout',
         function(req,res){res.redirect('/login');
     });
