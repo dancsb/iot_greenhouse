@@ -8,8 +8,8 @@ const http = require('http');
 const https = require('https');
 
 const credentials = {
-    key: fs.readFileSync('/etc/letsencrypt/live/greenhouse.dancs.org/privkey.pem'),
-    cert: fs.readFileSync('/etc/letsencrypt/live/greenhouse.dancs.org/fullchain.pem')
+    key: fs.readFileSync('C:/Users/balazs/Documents/___dancs.sch.bme.hu/dancs.sch.bme.hu/privkey.pem'),
+    cert: fs.readFileSync('C:/Users/balazs/Documents/___dancs.sch.bme.hu/dancs.sch.bme.hu/fullchain.pem')
 };
 
 app.set('view engine', 'ejs');
@@ -26,7 +26,7 @@ app.use(
         rolling: true,
         saveUninitialized: false,
         cookie: {
-            domain: 'greenhouse.dancs.org',
+            domain: 'dancs.sch.bme.hu',
             maxAge: 14 * 24 * 60 * 60 * 1000,
             secure: true,
             httpOnly: true
@@ -47,5 +47,5 @@ const httpServer = http.createServer(function (req, res) {
 });
 const httpsServer = https.createServer(credentials, app);
 
-httpServer.listen(804);
-httpsServer.listen(4434);
+httpServer.listen(80);
+httpsServer.listen(443);
