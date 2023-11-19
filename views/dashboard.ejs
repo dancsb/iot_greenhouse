@@ -6,9 +6,8 @@
             <h1 class="mb-4 mt-3">
                 IoT Greenhouse
             </h1>
-            <h2 class="mb-4 mt-3 text-start">
-                👋 Jó reggelt
-            </h2>
+            <h2 class="mb-4 mt-3 text-start" id="greeting"></h2>
+            <script> document.getElementById('greeting').textContent = (new Date().getHours() >= 7 && new Date().getHours() < 19) ? '👋 Good morning' : '🌒 Good evening'; </script>
             <div class="container mb-3 border border-success rounded-4">
                 <div class="row">
                     <div class="col-md-8">
@@ -17,17 +16,15 @@
                         </h5>
                     </div>
                     <div class="col-md-4 text-end">
-                        <i class="fa-solid fa-pencil"></i>
+                        <i class="fa-solid fa-pencil mt-2"></i>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-8">
                         <div class="container">
                             <div class="row">
-                                <div class="col-md-3 border border-success rounded-4">
-                                    <h2 class="mt-5 mb-5">
-                                        GRAPH
-                                    </h2>
+                                <div class="col-md-3 border border-success rounded-4 p-0">
+                                    <canvas style="display: block; width: 100%; height: 100%;" id="myChart"></canvas>
                                 </div>
                                 <div class="col-md-3 border border-success rounded-4">
                                     <h2 class="mt-5 mb-5">
@@ -70,7 +67,7 @@
                         </h5>
                     </div>
                     <div class="col-md-4 text-end">
-                        <i class="fa-solid fa-pencil"></i>
+                        <i class="fa-solid fa-pencil mt-2"></i>
                     </div>
                 </div>
                 <div class="row">
@@ -123,7 +120,7 @@
                         </h5>
                     </div>
                     <div class="col-md-4 text-end">
-                        <i class="fa-solid fa-pencil"></i>
+                        <i class="fa-solid fa-pencil mt-2"></i>
                     </div>
                 </div>
                 <div class="row">
@@ -169,11 +166,14 @@
                 </div>
             </div>
             <div class="d-flex justify-content-center">
-                <a class="btn btn-outline-success rounded-circle d-flex align-items-center justify-content-center" href="#" style="width: 74px; height: 74px;" role="button">
+                <a class="btn btn-outline-success rounded-circle d-flex align-items-center justify-content-center" href="/adopt" style="width: 74px; height: 74px;" role="button">
                     <i class="fa-solid fa-plus fa-2xl"></i>
                 </a>
             </div>
         </div>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="https://unpkg.com/mqtt@5.2.1/dist/mqtt.js"></script>
+<script src="dashboard.js"></script>
 <%- include('footer') -%>
