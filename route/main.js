@@ -35,6 +35,8 @@ module.exports = function(app) {
         authMW(objRepo),
         getLogeedInUserMW(objRepo),
         getGreeneriesMW(objRepo),
+        getUsersMW(objRepo),
+        (req, res, next) => {res.locals.sensorboxRepo = app.get('sensorboxRepo'); return next();},
         renderMW('adopt')
     );
 

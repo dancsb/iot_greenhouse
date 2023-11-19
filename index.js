@@ -41,6 +41,10 @@ app.use((err, req, res, next) => {
     console.log(err);
 });
 
+const sensorboxRepo = [];
+require('./mqtt/mqtt')(sensorboxRepo);
+app.set('sensorboxRepo', sensorboxRepo);
+
 const httpServer = http.createServer(function (req, res) {
     res.writeHead(302, { "Location": "https://" + req.headers['host'] + req.url });
     res.end();

@@ -13,10 +13,12 @@
                             <label class="form-label"><h4>Detected sensorboxes</h4></label>
                         </div>
                         <div class="col-md-7">
-                            <select class="form-select" id="sensorbox" name="sensorbox">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
+                            <select class="form-select" id="sensorbox" name="sensorbox" <%= (sensorboxRepo.filter(entry => !entry.acknowledged).length == 0) ? 'disabled' : '' %>>
+                                <% sensorboxRepo.forEach(function(sensorbox){ %>
+                                    <% if (!sensorbox.acknowledged) { %>
+                                        <option value="<%= sensorbox.serialNumber %>">Sensorbox #<%= sensorbox.serialNumber %></option>
+                                    <% } %>
+                                <% }); %>
                             </select>
                         </div>
                     </div>
@@ -34,13 +36,13 @@
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-5">
-                            <label class="form-label"><h4>Closest airconditioner</h4></label>
+                            <label class="form-label"><h4>Responsible user</h4></label>
                         </div>
                         <div class="col-md-7">
                             <select class="form-select" id="airconditioner" name="airconditioner">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
+                                <% users.forEach(function(user){ %>
+                                    <option value="<%= user._id %>"><%= user.username %></option>
+                                <% }); %>
                             </select>
                         </div>
                     </div>

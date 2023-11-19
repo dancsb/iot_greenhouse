@@ -47,7 +47,7 @@ var xd = 0;
 const topics = ['sensorbox/327314/#'];
 
 const mqtt_options = {
-    clientId: `dashboard-${Math.random().toString(16).substr(2, 8)}`,
+    clientId: `dashboard-${Math.random().toString(16).substring(2, 10)}`,
     username: 'Monitoring',
     password: '8aT239aV6A3MNa5',
     port: 8084,
