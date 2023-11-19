@@ -1,0 +1,63 @@
+<%- include('header') -%>
+<%- include('navbar') -%>
+<div class="container mt-3">
+    <form method="POST">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 mb-3">
+                <h1 class="mb-4 mt-3 text-center">
+                    Adopt sensorbox
+                </h1>
+                <div class="container mt-5">
+                    <div class="row mb-3">
+                        <div class="col-md-5">
+                            <label class="form-label"><h4>Detected sensorboxes</h4></label>
+                        </div>
+                        <div class="col-md-7">
+                            <select class="form-select" id="sensorbox" name="sensorbox">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-5">
+                            <label class="form-label"><h4>Type of greenery</h4></label>
+                        </div>
+                        <div class="col-md-7">
+                            <select class="form-select" id="greenery" name="greenery">
+                                <% greeneries.forEach(function(greenery){ %>
+                                    <option value="<%= greenery._id %>"><%= greenery.name %></option>
+                                <% }); %>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-5">
+                            <label class="form-label"><h4>Closest airconditioner</h4></label>
+                        </div>
+                        <div class="col-md-7">
+                            <select class="form-select" id="airconditioner" name="airconditioner">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="text-center">
+                    <% if (typeof error !== 'undefined') { %>
+                        <div class="alert alert-danger"><%= error %></div>
+                    <% } %>
+                    <input type="submit" class="btn btn-success w-100 mb-3" value="Save"/>
+                    <a class="btn btn-light w-100" href="/dashboard">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<%- include('footer') -%>
