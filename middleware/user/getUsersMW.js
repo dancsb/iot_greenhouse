@@ -5,15 +5,14 @@ module.exports = function (objectrepository) {
 	const UserModel = requireOption(objectrepository, 'UserModel');
   
     return function (req, res, next) {
-        UserModel.findOne({
-        	_id: req.params.userid
-        })
-        .then (function (user) {
-            if (!user) {
+        UserModel.find()
+        .sort({ username: 1 })
+        .then (function (users) {
+            if (!users) {
             	return next();
             }
 
-        	res.locals.user = user;
+        	res.locals.users = users;
             return next();
         })
         .catch(function (err) {

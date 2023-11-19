@@ -1,0 +1,10 @@
+<script>
+    function allowCustomValue(input) {
+        const value = Number(input.value);
+        if (Number.isInteger(value)) {
+            input.step = "1";
+        } else {
+            input.step = "0.01";
+        }
+    }
+</script>

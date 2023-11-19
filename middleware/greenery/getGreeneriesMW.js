@@ -2,18 +2,17 @@ const requireOption = require('../requireOption');
 
 module.exports = function (objectrepository) {
 
-	const UserModel = requireOption(objectrepository, 'UserModel');
+	const GreeneryModel = requireOption(objectrepository, 'GreeneryModel');
   
     return function (req, res, next) {
-        UserModel.findOne({
-        	_id: req.params.userid
-        })
-        .then (function (user) {
-            if (!user) {
+        GreeneryModel.find()
+        .sort({ name: 1 })
+        .then (function (greeneries) {
+            if (!greeneries) {
             	return next();
             }
 
-        	res.locals.user = user;
+        	res.locals.greeneries = greeneries;
             return next();
         })
         .catch(function (err) {

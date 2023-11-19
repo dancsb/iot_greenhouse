@@ -6,14 +6,14 @@ module.exports = function (objectrepository) {
   
     return function (req, res, next) {
         UserModel.findOne({
-        	_id: req.params.userid
+        	_id: req.session.userid
         })
         .then (function (user) {
             if (!user) {
             	return next();
             }
 
-        	res.locals.user = user;
+        	res.locals.logeedInUser = user;
             return next();
         })
         .catch(function (err) {
