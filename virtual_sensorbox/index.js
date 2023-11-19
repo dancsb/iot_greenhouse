@@ -10,7 +10,8 @@ function createVirtualDevice(deviceIndex) {
         clientId: `sensorbox_${serialNumbers[deviceIndex]}`,
         username: 'ESP32',
         password: 'yOjFxF5f42Kjq2X',
-        port: 8883
+        port: 8883,
+        protocolVersion: 5
     };
 
     const client = mqtt.connect('mqtts://mqtt.dancs.org', options);
@@ -50,7 +51,7 @@ function createVirtualDevice(deviceIndex) {
 }
 
 function getRandomChange() {
-    return (Math.random() - 0.5) * 0.5;
+    return (Math.random() - 0.5) * 5;
 }
 
 function clamp(value, min, max) {
