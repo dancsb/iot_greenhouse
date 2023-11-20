@@ -36,10 +36,10 @@
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-5">
-                            <label class="form-label"><h4>Responsible user</h4></label>
+                            <label class="form-label"><h4>Supervisor user</h4></label>
                         </div>
                         <div class="col-md-7">
-                            <select class="form-select" id="airconditioner" name="airconditioner">
+                            <select class="form-select" id="supervisor" name="supervisor">
                                 <% users.forEach(function(user){ %>
                                     <option value="<%= user._id %>"><%= user.username %></option>
                                 <% }); %>

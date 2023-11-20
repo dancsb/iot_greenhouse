@@ -4,7 +4,7 @@ module.exports = function (objectrepository) {
 
     const GreeneryModel = requireOption(objectrepository, 'GreeneryModel');
 
-    return async function (req, res, next) {
+    return function (req, res, next) {
         if (
             (typeof req.body.greeneryname === 'undefined') &&
             (typeof req.body.source === 'undefined' ||

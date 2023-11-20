@@ -14,29 +14,36 @@ const saveGreeneryMW = require('../middleware/greenery/saveGreeneryMW');
 const getGreeneryMW = require('../middleware/greenery/getGreeneryMW');
 const getGreeneriesMW = require('../middleware/greenery/getGreeneriesMW');
 
+const saveSensorboxMW = require('../middleware/sensorbox/saveSensorboxMW');
+const getSensorboxesMW = require('../middleware/sensorbox/getSensorboxesMW');
+
 const UserModel = require('../models/user');
 const GreeneryModel = require('../models/greenery');
+const SensorboxModel = require('../models/sensorbox');
 
 module.exports = function(app) {
     const objRepo = {
         UserModel: UserModel,
-        GreeneryModel: GreeneryModel
+        GreeneryModel: GreeneryModel,
+        SensorboxModel: SensorboxModel
     };
 
     app.get(
         '/dashboard',
         authMW(objRepo),
         getLogeedInUserMW(objRepo),
+        getSensorboxesMW(objRepo),
         renderMW('dashboard')
     );
 
-    app.get(
+    app.use(
         '/adopt',
         authMW(objRepo),
         getLogeedInUserMW(objRepo),
         getGreeneriesMW(objRepo),
         getUsersMW(objRepo),
         (req, res, next) => {res.locals.sensorboxRepo = app.get('sensorboxRepo'); return next();},
+        saveSensorboxMW(objRepo, app.get('sensorboxRepo')),
         renderMW('adopt')
     );
 

@@ -34,16 +34,16 @@ app.use(
     })
 );
 
+const sensorboxRepo = [];
+require('./mqtt/mqtt')(sensorboxRepo);
+app.set('sensorboxRepo', sensorboxRepo);
+
 require('./route/main')(app);
 
 app.use((err, req, res, next) => {
     res.end('Problem...');
     console.log(err);
 });
-
-const sensorboxRepo = [];
-require('./mqtt/mqtt')(sensorboxRepo);
-app.set('sensorboxRepo', sensorboxRepo);
 
 const httpServer = http.createServer(function (req, res) {
     res.writeHead(302, { "Location": "https://" + req.headers['host'] + req.url });

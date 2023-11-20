@@ -55,7 +55,6 @@ const mqtt_options = {
 };
 
 const client = mqtt.connect('wss://mqtt.dancs.org/mqtt', mqtt_options);
-console.log(client);
 
 client.on('connect', () => {
     client.subscribe(topics, (err) => {
