@@ -8,163 +8,53 @@
             </h1>
             <h2 class="mb-4 mt-3 text-start" id="greeting"></h2>
             <script> document.getElementById('greeting').textContent = (new Date().getHours() >= 7 && new Date().getHours() < 19) ? '👋 Good morning' : '🌒 Good evening'; </script>
-            <div class="container mb-3 border border-success rounded-4">
-                <div class="row">
-                    <div class="col-md-8">
-                        <h5 class="text-start">
-                            Sensorbox #524352 | paradicsom
-                        </h5>
+            <% sensorboxes.forEach(function(sensorbox){ %>
+                <div class="container mb-3 border border-success rounded-4">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h5 class="text-start">
+                                Sensorbox #<%= sensorbox.serialNumber %> | <%= sensorbox.greenery.name %>
+                            </h5>
+                        </div>
+                        <div class="col-md-4 text-end">
+                            <i class="fa-solid fa-pencil mt-2"></i>
+                        </div>
                     </div>
-                    <div class="col-md-4 text-end">
-                        <i class="fa-solid fa-pencil mt-2"></i>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-8">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-3 border border-success rounded-4 p-0">
-                                    <canvas style="display: block; width: 100%; height: 100%;" id="myChart"></canvas>
-                                </div>
-                                <div class="col-md-3 border border-success rounded-4">
-                                    <h2 class="mt-5 mb-5">
-                                        GRAPH
-                                    </h2>
-                                </div>
-                                <div class="col-md-3 border border-success rounded-4">
-                                    <h2 class="mt-5 mb-5">
-                                        GRAPH
-                                    </h2>
-                                </div>
-                                <div class="col-md-3 border border-success rounded-4">
-                                    <h2 class="mt-5 mb-5">
-                                        GRAPH
-                                    </h2>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-3 border border-success rounded-4 p-0">
+                                        <canvas style="display: block; width: 100%; height: 100%;" id="<%= sensorbox.serialNumber %>-temp"></canvas>
+                                    </div>
+                                    <div class="col-md-3 border border-success rounded-4 p-0">
+                                        <canvas style="display: block; width: 100%; height: 100%;" id="<%= sensorbox.serialNumber %>-hum"></canvas>
+                                    </div>
+                                    <div class="col-md-3 border border-success rounded-4 p-0">
+                                        <canvas style="display: block; width: 100%; height: 100%;" id="<%= sensorbox.serialNumber %>-CO2"></canvas>
+                                    </div>
+                                    <div class="col-md-3 border border-success rounded-4 p-0">
+                                        <canvas style="display: block; width: 100%; height: 100%;" id="<%= sensorbox.serialNumber %>-moist"></canvas>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <ul class="mt-4 text-start border border-success rounded-4">
-                            <li>
-                                2023.10.08. 12:35 watering
-                            </li>
-                            <li>
-                                2023.10.07. 04:23 heating
-                            </li>
-                            <li>
-                                2023.10.02. 14:55 venting
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="container mb-3 border border-success rounded-4">
-                <div class="row">
-                    <div class="col-md-8">
-                        <h5 class="text-start">
-                            Sensorbox #827233 | cukkini
-                        </h5>
-                    </div>
-                    <div class="col-md-4 text-end">
-                        <i class="fa-solid fa-pencil mt-2"></i>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-8">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-3 border border-success rounded-4">
-                                    <h2 class="mt-5 mb-5">
-                                        GRAPH
-                                    </h2>
-                                </div>
-                                <div class="col-md-3 border border-success rounded-4">
-                                    <h2 class="mt-5 mb-5">
-                                        GRAPH
-                                    </h2>
-                                </div>
-                                <div class="col-md-3 border border-success rounded-4">
-                                    <h2 class="mt-5 mb-5">
-                                        GRAPH
-                                    </h2>
-                                </div>
-                                <div class="col-md-3 border border-success rounded-4">
-                                    <h2 class="mt-5 mb-5">
-                                        GRAPH
-                                    </h2>
-                                </div>
-                            </div>
+                        <div class="col-md-4">
+                            <ul class="mt-4 text-start border border-success rounded-4">
+                                <li>
+                                    2023.10.08. 12:35 watering
+                                </li>
+                                <li>
+                                    2023.10.07. 04:23 heating
+                                </li>
+                                <li>
+                                    2023.10.02. 14:55 venting
+                                </li>
+                            </ul>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <ul class="mt-4 text-start border border-success rounded-4">
-                            <li>
-                                2023.10.08. 12:35 watering
-                            </li>
-                            <li>
-                                2023.10.07. 04:23 heating
-                            </li>
-                            <li>
-                                2023.10.02. 14:55 venting
-                            </li>
-                        </ul>
-                    </div>
                 </div>
-            </div>
-            <div class="container mb-3 border border-success rounded-4">
-                <div class="row">
-                    <div class="col-md-8">
-                        <h5 class="text-start">
-                            Sensorbox #327312 | vargánya gomba
-                        </h5>
-                    </div>
-                    <div class="col-md-4 text-end">
-                        <i class="fa-solid fa-pencil mt-2"></i>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-8">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-3 border border-success rounded-4">
-                                    <h2 class="mt-5 mb-5">
-                                        GRAPH
-                                    </h2>
-                                </div>
-                                <div class="col-md-3 border border-success rounded-4">
-                                    <h2 class="mt-5 mb-5">
-                                        GRAPH
-                                    </h2>
-                                </div>
-                                <div class="col-md-3 border border-success rounded-4">
-                                    <h2 class="mt-5 mb-5">
-                                        GRAPH
-                                    </h2>
-                                </div>
-                                <div class="col-md-3 border border-success rounded-4">
-                                    <h2 class="mt-5 mb-5">
-                                        GRAPH
-                                    </h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <ul class="mt-4 text-start border border-success rounded-4">
-                            <li>
-                                2023.10.08. 12:35 watering
-                            </li>
-                            <li>
-                                2023.10.07. 04:23 heating
-                            </li>
-                            <li>
-                                2023.10.02. 14:55 venting
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            <% }); %>
             <div class="d-flex justify-content-center">
                 <a class="btn btn-outline-success rounded-circle d-flex align-items-center justify-content-center" href="/adopt" style="width: 74px; height: 74px;" role="button">
                     <i class="fa-solid fa-plus fa-2xl"></i>
@@ -175,5 +65,6 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script src="https://unpkg.com/mqtt@5.2.1/dist/mqtt.js"></script>
+<script> const sensorboxes = [<% sensorboxes.forEach(function(sensorbox){ %>"<%= sensorbox.serialNumber %>", <% }); %>]; </script>
 <script src="dashboard.js"></script>
 <%- include('footer') -%>

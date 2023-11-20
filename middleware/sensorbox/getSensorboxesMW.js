@@ -5,8 +5,16 @@ module.exports = function (objectrepository) {
 	const SensorboxModel = requireOption(objectrepository, 'SensorboxModel');
   
     return function (req, res, next) {
-        SensorboxModel.find()
-        .sort({ serialNumber: 1 })
+        SensorboxModel.aggregate([
+            { $lookup: {
+                from: 'greeneries',
+                localField: '_greenery',
+                foreignField: '_id',
+                as: 'greenery'
+            } },
+            { $sort: { serialNumber: 1 } },
+            { $unwind: { path: '$greenery' } }
+        ])
         .then (function (sensorboxes) {
             if (!sensorboxes) {
             	return next();
