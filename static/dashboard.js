@@ -6,6 +6,9 @@ var initialData = {
 
 var options = {
     scales: {
+        x: {
+            display: false,
+        },
         y: {
             beginAtZero: true
         }
@@ -27,8 +30,8 @@ function createChart(serialNumber, label, color) {
         case 'CO2':
             initialData.datasets[0].label = 'CO2';
             break;
-        case 'moist':
-            initialData.datasets[0].label = 'Soil Moisture';
+        case 'light':
+            initialData.datasets[0].label = 'Light';
             break;
     }
 
@@ -48,13 +51,13 @@ sensorboxes.forEach(serialNumber => {
     const tempChart = createChart(serialNumber, 'temp', [191, 78, 78]);
     const humChart = createChart(serialNumber, 'hum', [78, 191, 78]);
     const CO2Chart = createChart(serialNumber, 'CO2', [215, 215, 215]);
-    const moistChart = createChart(serialNumber, 'moist', [78, 78, 191]);
+    const lightChart = createChart(serialNumber, 'light', [191, 191, 78]);
 
     charts[serialNumber] = {
         temp: tempChart,
         hum: humChart,
         CO2: CO2Chart,
-        moist: moistChart
+        light: lightChart
     };
 });
 
@@ -64,6 +67,7 @@ function addData(chart, label, data) {
         dataset.data.push(data);
     });
     chart.update();
+    removeOldData(chart);
 }
 
 function removeOldData(chart) {
@@ -77,7 +81,7 @@ function removeOldData(chart) {
 }
 
 const mqtt_options = {
-    clientId: `dashboard-${Math.random().toString(16).substring(2, 10)}`,
+    clientId: `dashboard_${Math.random().toString(16).substring(2, 10)}`,
     username: 'Monitoring',
     password: '8aT239aV6A3MNa5',
     port: 8084,
@@ -95,20 +99,17 @@ client.on('connect', () => {
 
 client.on('message', (topic, message) => {
     const sliced = topic.toString().split('/');
-    if (sliced.length > 2 && sliced[0] === 'sensorbox' && charts.hasOwnProperty(sliced[1])) {
-        if (sliced[2] === 'temp') {
-            addData(charts[sliced[1]].temp, "0", message.toString());
-            removeOldData(charts[sliced[1]].temp);
-        } else if (sliced[2] === 'hum') {
-            addData(charts[sliced[1]].hum, "0", message.toString());
-            removeOldData(charts[sliced[1]].hum);
-        } else if (sliced[2] === 'CO2') {
-            addData(charts[sliced[1]].CO2, "0", message.toString());
-            removeOldData(charts[sliced[1]].CO2);
-        } else if (sliced[2] === 'moist') {
-            addData(charts[sliced[1]].moist, "0", message.toString());
-            removeOldData(charts[sliced[1]].moist);
-        }
+    const parsed = JSON.parse(message.toString());
+    const date = new Date().toLocaleString();
+    if (sliced.length > 2 && sliced[0] === 'sensorbox' && charts.hasOwnProperty(sliced[1]) && sliced[2] === 'readings') {
+        if (parsed.hasOwnProperty('temp'))
+            addData(charts[sliced[1]].temp, date, parsed.temp);
+        if (parsed.hasOwnProperty('hum'))
+            addData(charts[sliced[1]].hum, date, parsed.hum);
+        if (parsed.hasOwnProperty('CO2'))
+            addData(charts[sliced[1]].CO2, date, parsed.CO2);
+        if (parsed.hasOwnProperty('light'))
+            addData(charts[sliced[1]].light, date, parsed.light);
     }
 });
 

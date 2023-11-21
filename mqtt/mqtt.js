@@ -13,7 +13,7 @@ module.exports = function(sensorboxRepo) {
         })));
 
         const mqtt_options = {
-            clientId: 'WebServer',
+            clientId: `WebServer_${Math.random().toString(16).substring(2, 10)}`,
             username: 'WebServer',
             password: 'LX1xu0I8LrloDeR',
             port: 8084,
