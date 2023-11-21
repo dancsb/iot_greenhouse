@@ -32,7 +32,7 @@ module.exports = function(sensorboxRepo) {
 
         client.on('message', (topic, _) => {
             const sliced = topic.toString().split('/');
-            if (sliced.length > 1 && sliced[0] === 'sensorbox' && !sensorboxRepo.some(entry => entry.serialNumber === sliced[1])) {
+            if (sliced.length > 2 && sliced[0] === 'sensorbox' && !sensorboxRepo.some(entry => entry.serialNumber === sliced[1]) && sliced[2] === 'readings') {
                 sensorboxRepo.push({ serialNumber: sliced[1], acknowledged: false });
                 sensorboxRepo.sort((a, b) => a.serialNumber - b.serialNumber);
             }
