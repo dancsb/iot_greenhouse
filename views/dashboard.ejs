@@ -13,10 +13,13 @@
                     <div class="row">
                         <div class="col-md-8">
                             <h5 class="text-start">
-                                Sensorbox #<%= sensorbox.serialNumber %> | <%= sensorbox.greenery.name %>
+                                <a href="/sensorboxes/<%= sensorbox.serialNumber %>" class="text-decoration-none">
+                                    Sensorbox #<%= sensorbox.serialNumber %> | <%= sensorbox.greenery.name %>
+                                </a>
                             </h5>
                         </div>
                         <div class="col-md-4 text-end">
+                            <%= sensorbox.supervisor.username %>
                             <i class="fa-solid fa-pencil mt-2"></i>
                         </div>
                     </div>
@@ -66,5 +69,5 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script src="https://unpkg.com/mqtt@5.2.1/dist/mqtt.js"></script>
 <script> const sensorboxes = [<% sensorboxes.forEach(function(sensorbox){ %>"<%= sensorbox.serialNumber %>", <% }); %>]; </script>
-<script src="dashboard.js"></script>
+<script src="/dashboard.js"></script>
 <%- include('footer') -%>

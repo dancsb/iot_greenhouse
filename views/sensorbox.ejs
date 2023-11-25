@@ -1,0 +1,45 @@
+<%- include('header') -%>
+<%- include('navbar') -%>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 text-start">
+            <h2 class="mb-4 mt-3">
+                Sensorbox #<%= sensorbox.serialNumber %> | <%= sensorbox.greenery.name %>
+            </h2>
+        </div>
+        <div class="col-md-4 text-end">
+            <h2 class="mb-4 mt-3">
+                <%= sensorbox.supervisor.username %>
+            </h2>
+        </div>
+    </div>
+    <dic class="row mb-4">
+        <div class="col-md-6">
+            <div class="border border-success rounded-4">
+                <canvas style="display: block; width: 100%; height: 250px;" id="<%= sensorbox.serialNumber %>-temp"></canvas>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="border border-success rounded-4">
+                <canvas style="display: block; width: 100%; height: 250px;" id="<%= sensorbox.serialNumber %>-hum"></canvas>
+            </div>
+        </div>
+    </dic>
+    <dic class="row mb-4">
+        <div class="col-md-6">
+            <div class="border border-success rounded-4">
+                <canvas style="display: block; width: 100%; height: 250px;" id="<%= sensorbox.serialNumber %>-CO2"></canvas>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="border border-success rounded-4">
+                <canvas style="display: block; width: 100%; height: 250px;" id="<%= sensorbox.serialNumber %>-light"></canvas>
+            </div>
+        </div>
+    </dic>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="https://unpkg.com/mqtt@5.2.1/dist/mqtt.js"></script>
+<script> const sensorboxes = ["<%= sensorbox.serialNumber %>"]; </script>
+<script src="/dashboard.js"></script>
+<%- include('footer') -%>

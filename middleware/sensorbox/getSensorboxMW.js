@@ -6,6 +6,7 @@ module.exports = function (objectrepository) {
   
     return function (req, res, next) {
         SensorboxModel.aggregate([
+            { $match: { serialNumber: req.params.sensorboxid } },
             { $lookup: {
                 from: 'greeneries',
                 localField: '_greenery',
@@ -18,16 +19,15 @@ module.exports = function (objectrepository) {
                 foreignField: '_id',
                 as: 'supervisor'
             } },
-            { $sort: { serialNumber: 1 } },
             { $unwind: { path: '$greenery' } },
             { $unwind: { path: '$supervisor' } }
         ])
-        .then (function (sensorboxes) {
-            if (!sensorboxes) {
+        .then (function (sensorbox) {
+            if (!sensorbox) {
             	return next();
             }
 
-        	res.locals.sensorboxes = sensorboxes;
+        	res.locals.sensorbox = sensorbox[0];
             return next();
         })
         .catch(function (err) {
