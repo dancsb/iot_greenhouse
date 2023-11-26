@@ -3,14 +3,14 @@ const db = require('../config/db');
 
 const Greenery = db.model('Greenery', {
     name: String,
-    tempLowTreshold: Number,
-    tempHighTreshold: Number,
-    humLowTreshold: Number,
-    humHighTreshold: Number,
-    CO2LowTreshold: Number,
-    CO2HighTreshold: Number,
-    moistLowTreshold: Number,
-    moistHighTreshold: Number
+    tempLowThreshold: Number,
+    tempHighThreshold: Number,
+    humLowThreshold: Number,
+    humHighThreshold: Number,
+    CO2LowThreshold: Number,
+    CO2HighThreshold: Number,
+    moistLowThreshold: Number,
+    moistHighThreshold: Number
 });
 
 module.exports = Greenery;

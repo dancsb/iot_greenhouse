@@ -8,8 +8,8 @@ module.exports = function (objectrepository) {
         if (
             (typeof req.body.greeneryname === 'undefined') &&
             (typeof req.body.source === 'undefined' ||
-            typeof req.body.lowTresh === 'undefined' ||
-            typeof req.body.highTresh === 'undefined')
+            typeof req.body.lowThresh === 'undefined' ||
+            typeof req.body.highThresh === 'undefined')
         ) {
             return next();
         }
@@ -29,8 +29,8 @@ module.exports = function (objectrepository) {
             }
         } else {
             if (
-                req.body.lowTresh === '' ||
-                req.body.highTresh === ''
+                req.body.lowThresh === '' ||
+                req.body.highThresh === ''
             ) {
                 res.locals.error = 'Fill in all the fields!';
                 return next();
@@ -38,20 +38,20 @@ module.exports = function (objectrepository) {
 
             switch (req.body.source) {
                 case 'temp':
-                    res.locals.greenery.tempLowTreshold = req.body.lowTresh;
-                    res.locals.greenery.tempHighTreshold = req.body.highTresh;
+                    res.locals.greenery.tempLowThreshold = req.body.lowThresh;
+                    res.locals.greenery.tempHighThreshold = req.body.highThresh;
                     break;
                 case 'hum':
-                    res.locals.greenery.humLowTreshold = req.body.lowTresh;
-                    res.locals.greenery.humHighTreshold = req.body.highTresh;
+                    res.locals.greenery.humLowThreshold = req.body.lowThresh;
+                    res.locals.greenery.humHighThreshold = req.body.highThresh;
                     break;
                 case 'CO2':
-                    res.locals.greenery.CO2LowTreshold = req.body.lowTresh;
-                    res.locals.greenery.CO2HighTreshold = req.body.highTresh;
+                    res.locals.greenery.CO2LowThreshold = req.body.lowThresh;
+                    res.locals.greenery.CO2HighThreshold = req.body.highThresh;
                     break;
                 case 'moist':
-                    res.locals.greenery.moistLowTreshold = req.body.lowTresh;
-                    res.locals.greenery.moistHighTreshold = req.body.highTresh;
+                    res.locals.greenery.moistLowThreshold = req.body.lowThresh;
+                    res.locals.greenery.moistHighThreshold = req.body.highThresh;
                     break;
                 default:
                     res.locals.error = 'Fill in all the fields!';

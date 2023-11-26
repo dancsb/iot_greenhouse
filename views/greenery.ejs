@@ -22,17 +22,17 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Low Treshold</th>
-                        <th scope="col">High Treshold</th>
+                        <th scope="col">Low Threshold</th>
+                        <th scope="col">High Threshold</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <% if (typeof greenery.tempLowTreshold !== 'undefined') { %>
+                    <% if (typeof greenery.tempLowThreshold !== 'undefined') { %>
                         <tr>
                             <th scope="row">Temperature</th>
-                            <td><%= greenery.tempLowTreshold %> C°</td>
-                            <td><%= greenery.tempHighTreshold %> C°</td>
+                            <td><%= greenery.tempLowThreshold %> C°</td>
+                            <td><%= greenery.tempHighThreshold %> C°</td>
                             <td style="width:30px;white-space: nowrap">
                                 <button onclick="changeDelLink('/greeneries/<%= greenery._id %>/temp/del')" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delModal">
                                     <i class="fa-regular fa-trash-can"></i>
@@ -40,11 +40,11 @@
                             </td>
                         </tr>
                     <% } %>
-                    <% if (typeof greenery.humLowTreshold !== 'undefined') { %>
+                    <% if (typeof greenery.humLowThreshold !== 'undefined') { %>
                         <tr>
                             <th scope="row">Humidity</th>
-                            <td><%= greenery.humLowTreshold %> %</td>
-                            <td><%= greenery.humHighTreshold %> %</td>
+                            <td><%= greenery.humLowThreshold %> %</td>
+                            <td><%= greenery.humHighThreshold %> %</td>
                             <td style="width:30px;white-space: nowrap">
                                 <button onclick="changeDelLink('/greeneries/<%= greenery._id %>/hum/del')" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delModal">
                                     <i class="fa-regular fa-trash-can"></i>
@@ -52,11 +52,11 @@
                             </td>
                         </tr>
                     <% } %>
-                    <% if (typeof greenery.CO2LowTreshold !== 'undefined') { %>
+                    <% if (typeof greenery.CO2LowThreshold !== 'undefined') { %>
                         <tr>
                             <th scope="row">CO2</th>
-                            <td><%= greenery.CO2LowTreshold %> ppm</td>
-                            <td><%= greenery.CO2HighTreshold %> ppm</td>
+                            <td><%= greenery.CO2LowThreshold %> ppm</td>
+                            <td><%= greenery.CO2HighThreshold %> ppm</td>
                             <td style="width:30px;white-space: nowrap">
                                 <button onclick="changeDelLink('/greeneries/<%= greenery._id %>/CO2/del')" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delModal">
                                     <i class="fa-regular fa-trash-can"></i>
@@ -64,11 +64,11 @@
                             </td>
                         </tr>
                     <% } %>
-                    <% if (typeof greenery.moistLowTreshold !== 'undefined') { %>
+                    <% if (typeof greenery.moistLowThreshold !== 'undefined') { %>
                         <tr>
                             <th scope="row">Soil moisture</th>
-                            <td><%= greenery.moistLowTreshold %> %</td>
-                            <td><%= greenery.moistHighTreshold %> %</td>
+                            <td><%= greenery.moistLowThreshold %> %</td>
+                            <td><%= greenery.moistHighThreshold %> %</td>
                             <td style="width:30px;white-space: nowrap">
                                 <button onclick="changeDelLink('/greeneries/<%= greenery._id %>/moist/del')" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delModal">
                                     <i class="fa-regular fa-trash-can"></i>
@@ -76,7 +76,7 @@
                             </td>
                         </tr>
                     <% } %>
-                    <% if (typeof greenery.tempLowTreshold === 'undefined' && typeof greenery.humLowTreshold === 'undefined' && typeof greenery.CO2LowTreshold === 'undefined' && typeof greenery.moistLowTreshold === 'undefined') { %>
+                    <% if (typeof greenery.tempLowThreshold === 'undefined' && typeof greenery.humLowThreshold === 'undefined' && typeof greenery.CO2LowThreshold === 'undefined' && typeof greenery.moistLowThreshold === 'undefined') { %>
                         <tr>
                             <td class="text-center fst-italic" colspan="4">No constraints</td>
                         </tr>
@@ -102,19 +102,19 @@
                 <h5 class="mb-5">New constraint</h5>
                 <form method="POST">
                     <select onchange="changeUnitLabel(this.options[this.selectedIndex].dataset.unit)" class="form-select mt-3 mb-4" id="source" name="source">
-                        <% if (typeof greenery.tempLowTreshold === 'undefined') { %>
+                        <% if (typeof greenery.tempLowThreshold === 'undefined') { %>
                             <option value="temp" data-unit="C°">Temperature</option>
                         <% } %>
-                        <% if (typeof greenery.humLowTreshold === 'undefined') { %>
+                        <% if (typeof greenery.humLowThreshold === 'undefined') { %>
                             <option value="hum" data-unit="%">Humidity</option>
                         <% } %>
-                        <% if (typeof greenery.CO2LowTreshold === 'undefined') { %>
+                        <% if (typeof greenery.CO2LowThreshold === 'undefined') { %>
                             <option value="CO2" data-unit="ppm">CO2</option>
                         <% } %>
-                        <% if (typeof greenery.moistLowTreshold === 'undefined') { %>
+                        <% if (typeof greenery.moistLowThreshold === 'undefined') { %>
                             <option value="moist" data-unit="%">Soil moisture</option>
                         <% } %>
-                        <% if (typeof greenery.tempLowTreshold !== 'undefined' && typeof greenery.humLowTreshold !== 'undefined' && typeof greenery.CO2LowTreshold !== 'undefined' && typeof greenery.moistLowTreshold !== 'undefined') { %>
+                        <% if (typeof greenery.tempLowThreshold !== 'undefined' && typeof greenery.humLowThreshold !== 'undefined' && typeof greenery.CO2LowThreshold !== 'undefined' && typeof greenery.moistLowThreshold !== 'undefined') { %>
                             <option value="-" data-unit="-">-</option>
                         <% } %>
                     </select>
@@ -122,13 +122,13 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="input-group">
-                                    <input type="number" class="form-control" placeholder="Low treshold" oninput="allowCustomValue(this)" id="low" name="lowTresh">
+                                    <input type="number" class="form-control" placeholder="Low threshold" oninput="allowCustomValue(this)" id="low" name="lowThresh">
                                     <span class="input-group-text unitlabel"></span>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="input-group">
-                                    <input type="number" class="form-control" placeholder="High treshold" oninput="allowCustomValue(this)" id="high" name="highTresh">
+                                    <input type="number" class="form-control" placeholder="High threshold" oninput="allowCustomValue(this)" id="high" name="highThresh">
                                     <span class="input-group-text unitlabel"></span>
                                 </div>
                             </div>

@@ -2,20 +2,20 @@ module.exports = function () {
     return function (req, res, next) {
         switch (req.params.constraint) {
             case 'temp':
-                res.locals.greenery.tempLowTreshold = undefined;
-                res.locals.greenery.tempHighTreshold = undefined;
+                res.locals.greenery.tempLowThreshold = undefined;
+                res.locals.greenery.tempHighThreshold = undefined;
                 break;
             case 'hum':
-                res.locals.greenery.humLowTreshold = undefined;
-                res.locals.greenery.humHighTreshold = undefined;
+                res.locals.greenery.humLowThreshold = undefined;
+                res.locals.greenery.humHighThreshold = undefined;
                 break;
             case 'CO2':
-                res.locals.greenery.CO2LowTreshold = undefined;
-                res.locals.greenery.CO2HighTreshold = undefined;
+                res.locals.greenery.CO2LowThreshold = undefined;
+                res.locals.greenery.CO2HighThreshold = undefined;
                 break;
             case 'moist':
-                res.locals.greenery.moistLowTreshold = undefined;
-                res.locals.greenery.moistHighTreshold = undefined;
+                res.locals.greenery.moistLowThreshold = undefined;
+                res.locals.greenery.moistHighThreshold = undefined;
                 break;
             default:
                 res.locals.error = 'Constraint not found!';
