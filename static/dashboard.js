@@ -30,8 +30,8 @@ function createChart(serialNumber, label, color) {
         case 'CO2':
             initialData.datasets[0].label = 'CO2';
             break;
-        case 'light':
-            initialData.datasets[0].label = 'Light';
+        case 'moist':
+            initialData.datasets[0].label = 'moist';
             break;
     }
 
@@ -51,13 +51,13 @@ sensorboxes.forEach(serialNumber => {
     const tempChart = createChart(serialNumber, 'temp', [191, 78, 78]);
     const humChart = createChart(serialNumber, 'hum', [78, 191, 78]);
     const CO2Chart = createChart(serialNumber, 'CO2', [215, 215, 215]);
-    const lightChart = createChart(serialNumber, 'light', [191, 191, 78]);
+    const moistChart = createChart(serialNumber, 'moist', [78, 78, 191]);
 
     charts[serialNumber] = {
         temp: tempChart,
         hum: humChart,
         CO2: CO2Chart,
-        light: lightChart
+        moist: moistChart
     };
 });
 
@@ -108,8 +108,8 @@ client.on('message', (topic, message) => {
             addData(charts[sliced[1]].hum, date, parsed.hum);
         if (parsed.hasOwnProperty('CO2'))
             addData(charts[sliced[1]].CO2, date, parsed.CO2);
-        if (parsed.hasOwnProperty('light'))
-            addData(charts[sliced[1]].light, date, parsed.light);
+        if (parsed.hasOwnProperty('moist'))
+            addData(charts[sliced[1]].moist, date, parsed.moist);
     }
 });
 

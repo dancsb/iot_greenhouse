@@ -3,7 +3,7 @@ const mqtt = require('mqtt');
 const serialNumbers = ['524352', '827233', '327314'];
 const numDevices = 3;
 
-const deviceStates = [[25.0, 60.0, 700.0, 200.0], [15.0, 34.0, 600.0, 350.5], [31.0, 45.0, 1000.0, 100.0]];
+const deviceStates = [[25.0, 60.0, 700.0, 20.0], [15.0, 34.0, 600.0, 35.5], [31.0, 45.0, 1000.0, 10.0]];
 
 function createVirtualDevice(deviceIndex) {
     const options = {
@@ -23,12 +23,12 @@ function createVirtualDevice(deviceIndex) {
             deviceStates[deviceIndex][0] += getRandomChange(5);
             deviceStates[deviceIndex][1] += getRandomChange(5);
             deviceStates[deviceIndex][2] += getRandomChange(20);
-            deviceStates[deviceIndex][3] += getRandomChange(15);
+            deviceStates[deviceIndex][3] += getRandomChange(5);
 
             deviceStates[deviceIndex][0] = clamp(deviceStates[deviceIndex][0], 20.0, 40.0);
             deviceStates[deviceIndex][1] = clamp(deviceStates[deviceIndex][1], 20.0, 80.0);
             deviceStates[deviceIndex][2] = clamp(deviceStates[deviceIndex][2], 500.0, 1500.0);
-            deviceStates[deviceIndex][3] = clamp(deviceStates[deviceIndex][3], 0.0, 1000.0);
+            deviceStates[deviceIndex][3] = clamp(deviceStates[deviceIndex][3], 0.0, 80.0);
 
             const topic = `sensorbox/${serialNumbers[deviceIndex]}/readings`;
 
@@ -36,7 +36,7 @@ function createVirtualDevice(deviceIndex) {
                 temp: parseFloat(deviceStates[deviceIndex][0].toFixed(1)),
                 hum: parseFloat(deviceStates[deviceIndex][1].toFixed(1)),
                 CO2: parseFloat(deviceStates[deviceIndex][2].toFixed(1)),
-                light: parseFloat(deviceStates[deviceIndex][3].toFixed(1))
+                moist: parseFloat(deviceStates[deviceIndex][3].toFixed(1))
             });
 
             client.publish(topic, message, (err) => {
