@@ -11,7 +11,7 @@
                     <thead>
                         <tr>
                             <th scope="col">Username</th>
-                            <th scope="col">Note</th>
+                            <th scope="col">e-mail</th>
                             <th scope="col" class="text-center">Action</th>
                         </tr>
                     </thead>
@@ -22,7 +22,7 @@
                                     <%= user.username %>
                                 </td>
                                 <td>
-                                    <%= user.note %>
+                                    <%= user.email %>
                                 </td>
                                 <td style="width:30px;white-space: nowrap">
                                     <a href="/users/<%= user._id %>/edit" class="btn btn-warning" role="button"><i class="fa-solid fa-pencil"></i></a>
@@ -58,7 +58,7 @@
                         <input type="text" class="form-control" placeholder="username" id="user" name="username">
                     </div>
                     <div class="mt-3 mb-3">
-                        <input type="text" class="form-control" placeholder="note" id="note" name="note">
+                        <input type="email  " class="form-control" placeholder="e-mail" id="email" name="emailaddress">
                     </div>
                     <div class="mt-3 mb-3">
                         <input type="password" class="form-control" placeholder="password" id="pass" name="password">

@@ -8,7 +8,7 @@ module.exports = function (objectrepository) {
     return async function (req, res, next) {
         if (
             typeof req.body.username === 'undefined' ||
-            typeof req.body.note === 'undefined' ||
+            typeof req.body.emailaddress === 'undefined' ||
             typeof req.body.password === 'undefined'
         ) {
             return next();
@@ -19,7 +19,7 @@ module.exports = function (objectrepository) {
         }
 
         res.locals.user.username = req.body.username;
-        res.locals.user.note = req.body.note;
+        res.locals.user.email = req.body.emailaddress;
         
         crypto.generateKey('aes', { length: 256 }, (err, key) => {
             if (err) {
@@ -43,6 +43,7 @@ module.exports = function (objectrepository) {
 
         if (
             req.body.username === '' ||
+            req.body.emailaddress === '' ||
             req.body.password === ''
         ) {
             res.locals.error = 'Fill in all the fields!';

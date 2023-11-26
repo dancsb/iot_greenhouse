@@ -3,9 +3,9 @@ const db = require('../config/db');
 
 const User = db.model('User', {
     username: String,
+    email: String,
     hash: String,
     salt: String,
-    note: String
 });
 
 module.exports = User;
