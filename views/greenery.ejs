@@ -24,6 +24,7 @@
                         <th scope="col">#</th>
                         <th scope="col">Low Treshold</th>
                         <th scope="col">High Treshold</th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,6 +33,11 @@
                             <th scope="row">Temperature</th>
                             <td><%= greenery.tempLowTreshold %> C°</td>
                             <td><%= greenery.tempHighTreshold %> C°</td>
+                            <td style="width:30px;white-space: nowrap">
+                                <button onclick="changeDelLink('/greeneries/<%= greenery._id %>/temp/del')" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delModal">
+                                    <i class="fa-regular fa-trash-can"></i>
+                                </button>
+                            </td>
                         </tr>
                     <% } %>
                     <% if (typeof greenery.humLowTreshold !== 'undefined') { %>
@@ -39,6 +45,11 @@
                             <th scope="row">Humidity</th>
                             <td><%= greenery.humLowTreshold %> %</td>
                             <td><%= greenery.humHighTreshold %> %</td>
+                            <td style="width:30px;white-space: nowrap">
+                                <button onclick="changeDelLink('/greeneries/<%= greenery._id %>/hum/del')" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delModal">
+                                    <i class="fa-regular fa-trash-can"></i>
+                                </button>
+                            </td>
                         </tr>
                     <% } %>
                     <% if (typeof greenery.CO2LowTreshold !== 'undefined') { %>
@@ -46,6 +57,11 @@
                             <th scope="row">CO2</th>
                             <td><%= greenery.CO2LowTreshold %> ppm</td>
                             <td><%= greenery.CO2HighTreshold %> ppm</td>
+                            <td style="width:30px;white-space: nowrap">
+                                <button onclick="changeDelLink('/greeneries/<%= greenery._id %>/CO2/del')" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delModal">
+                                    <i class="fa-regular fa-trash-can"></i>
+                                </button>
+                            </td>
                         </tr>
                     <% } %>
                     <% if (typeof greenery.moistLowTreshold !== 'undefined') { %>
@@ -53,11 +69,16 @@
                             <th scope="row">Soil moisture</th>
                             <td><%= greenery.moistLowTreshold %> %</td>
                             <td><%= greenery.moistHighTreshold %> %</td>
+                            <td style="width:30px;white-space: nowrap">
+                                <button onclick="changeDelLink('/greeneries/<%= greenery._id %>/moist/del')" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delModal">
+                                    <i class="fa-regular fa-trash-can"></i>
+                                </button>
+                            </td>
                         </tr>
                     <% } %>
                     <% if (typeof greenery.tempLowTreshold === 'undefined' && typeof greenery.humLowTreshold === 'undefined' && typeof greenery.CO2LowTreshold === 'undefined' && typeof greenery.moistLowTreshold === 'undefined') { %>
                         <tr>
-                            <td class="text-center fst-italic" colspan="3">No constraints</td>
+                            <td class="text-center fst-italic" colspan="4">No constraints</td>
                         </tr>
                     <% } %>
                 </tbody>

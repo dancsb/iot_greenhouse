@@ -31,7 +31,7 @@ function createChart(serialNumber, label, color) {
             initialData.datasets[0].label = 'CO2';
             break;
         case 'moist':
-            initialData.datasets[0].label = 'moist';
+            initialData.datasets[0].label = 'Soil Moisture';
             break;
     }
 
