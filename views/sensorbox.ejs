@@ -6,11 +6,14 @@
             <h2 class="mb-4 mt-3">
                 Sensorbox #<%= sensorbox.serialNumber %> | <%= sensorbox.greenery.name %>
             </h2>
+            <h3 class="mb-4 mt-3">
+                Supervisor: <%= sensorbox.supervisor.username %>
+            </h3>
         </div>
         <div class="col-md-4 text-end">
-            <h2 class="mb-4 mt-3">
-                <%= sensorbox.supervisor.username %>
-            </h2>
+            <button onclick="changeDelLink('/sensorboxes/<%= sensorbox.serialNumber %>/del')" type="button" class="btn btn-danger mt-3" data-bs-toggle="modal" data-bs-target="#delModal">
+                Delete
+            </button>
         </div>
     </div>
     <dic class="row mb-4">
@@ -33,7 +36,7 @@
         </div>
         <div class="col-md-6">
             <div class="border border-success rounded-4">
-                <canvas style="display: block; width: 100%; height: 250px;" id="<%= sensorbox.serialNumber %>-light"></canvas>
+                <canvas style="display: block; width: 100%; height: 250px;" id="<%= sensorbox.serialNumber %>-moist"></canvas>
             </div>
         </div>
     </dic>
@@ -42,4 +45,5 @@
 <script src="https://unpkg.com/mqtt@5.2.1/dist/mqtt.js"></script>
 <script> const sensorboxes = ["<%= sensorbox.serialNumber %>"]; </script>
 <script src="/dashboard.js"></script>
+<%- include('delmodal') -%>
 <%- include('footer') -%>

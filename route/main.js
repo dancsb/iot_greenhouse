@@ -15,6 +15,7 @@ const getGreeneryMW = require('../middleware/greenery/getGreeneryMW');
 const getGreeneriesMW = require('../middleware/greenery/getGreeneriesMW');
 
 const saveSensorboxMW = require('../middleware/sensorbox/saveSensorboxMW');
+const delSensorboxMW = require('../middleware/sensorbox/delSensorboxMW');
 const getSensorboxMW = require('../middleware/sensorbox/getSensorboxMW');
 const getSensorboxesMW = require('../middleware/sensorbox/getSensorboxesMW');
 
@@ -46,6 +47,12 @@ module.exports = function(app) {
         (req, res, next) => {res.locals.sensorboxRepo = app.get('sensorboxRepo'); return next();},
         saveSensorboxMW(objRepo, app.get('sensorboxRepo')),
         renderMW('adopt')
+    );
+
+    app.get(
+        '/sensorboxes/:sensorboxid/del',
+        authMW(objRepo),
+        delSensorboxMW(objRepo, app.get('sensorboxRepo')),
     );
 
     app.get(
