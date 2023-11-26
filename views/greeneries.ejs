@@ -16,15 +16,11 @@
                         <% }); %>
                     </div>
                     <div class="col-md-1">
-                        <h2 class="mt-3 mb-3">
-                            3
-                        </h2>
-                        <h2 class="mt-3 mb-3">
-                            2
-                        </h2>
-                        <h2 class="mt-3 mb-3">
-                            5
-                        </h2>
+                        <% greeneries.forEach(function(greenery){ %>
+                            <h2 class="mt-3 mb-3">
+                                <%= greenery.count %>
+                            </h2>
+                        <% }); %>
                     </div>
                 </div>
             </div>

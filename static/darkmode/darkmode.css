@@ -172,13 +172,13 @@ FCFCFC - stars
 
 .toggle,
 .toggle-bg,
-.toggle-switch,
-.toggle-switch-figureAlt,
-.toggle-switch-figure,
 .toggle-input,
-.toggle-switch-figureAlt::before,
+.toggle-switch,
+.toggle-switch-figure,
+.toggle-switch-figureAlt,
 .toggle-switch-figure::before,
-.toggle-switch-figureAlt::after,
-.toggle-switch-figure::after {
+.toggle-switch-figureAlt::before,
+.toggle-switch-figure::after,
+.toggle-switch-figureAlt::after {
     box-sizing: content-box;
 }
