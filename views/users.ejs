@@ -25,9 +25,9 @@
                                     <%= user.email %>
                                 </td>
                                 <td style="width:30px;white-space: nowrap">
-                                    <a href="/users/<%= user._id %>/edit" class="btn btn-warning" role="button"><i class="fa-solid fa-pencil"></i></a>
-                                    <a href="/users/<%= user._id %>/modify" class="btn btn-success" role="button"><i class="fa-solid fa-key"></i></a>
-                                    <button onclick="changeDelLink('/users/<%= user._id %>/del')" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delModal">
+                                    <a href="/user/<%= user._id %>/edit" class="btn btn-warning" role="button"><i class="fa-solid fa-pencil"></i></a>
+                                    <a href="/user/<%= user._id %>/modify" class="btn btn-success" role="button"><i class="fa-solid fa-key"></i></a>
+                                    <button onclick="changeDelLink('/user/<%= user._id %>/del')" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delModal">
                                         <i class="fa-regular fa-trash-can"></i>
                                     </button>
                                 </td>

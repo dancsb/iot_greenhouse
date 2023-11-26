@@ -64,7 +64,7 @@ module.exports = function (objectrepository) {
             if (uj)
                 return res.redirect('/greeneries');
             else
-                return res.redirect('/greeneries/' + req.params.greeneryid);
+                return res.redirect('/greenery/' + req.params.greeneryid);
         })
         .catch(err => {
             return next(err);

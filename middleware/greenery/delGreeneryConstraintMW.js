@@ -24,7 +24,7 @@ module.exports = function () {
 
         res.locals.greenery.save()
         .then(() => {
-            return res.redirect('/greeneries/' + req.params.greeneryid);
+            return res.redirect('/greenery/' + req.params.greeneryid);
         })
         .catch(err => {
             return next(err);

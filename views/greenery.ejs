@@ -8,7 +8,7 @@
             </h1>
         </div>
         <div class="col-md-2 text-end">
-            <button onclick="changeDelLink('/greeneries/<%= greenery._id %>/del')" type="button" class="btn btn-danger mt-4" data-bs-toggle="modal" data-bs-target="#delModal">
+            <button onclick="changeDelLink('/greenery/<%= greenery._id %>/del')" type="button" class="btn btn-danger mt-4" data-bs-toggle="modal" data-bs-target="#delModal">
                 Delete
             </button>
         </div>
@@ -34,7 +34,7 @@
                             <td><%= greenery.tempLowThreshold %> C°</td>
                             <td><%= greenery.tempHighThreshold %> C°</td>
                             <td style="width:30px;white-space: nowrap">
-                                <button onclick="changeDelLink('/greeneries/<%= greenery._id %>/temp/del')" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delModal">
+                                <button onclick="changeDelLink('/greenery/<%= greenery._id %>/temp/del')" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delModal">
                                     <i class="fa-regular fa-trash-can"></i>
                                 </button>
                             </td>
@@ -46,7 +46,7 @@
                             <td><%= greenery.humLowThreshold %> %</td>
                             <td><%= greenery.humHighThreshold %> %</td>
                             <td style="width:30px;white-space: nowrap">
-                                <button onclick="changeDelLink('/greeneries/<%= greenery._id %>/hum/del')" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delModal">
+                                <button onclick="changeDelLink('/greenery/<%= greenery._id %>/hum/del')" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delModal">
                                     <i class="fa-regular fa-trash-can"></i>
                                 </button>
                             </td>
@@ -58,7 +58,7 @@
                             <td><%= greenery.CO2LowThreshold %> ppm</td>
                             <td><%= greenery.CO2HighThreshold %> ppm</td>
                             <td style="width:30px;white-space: nowrap">
-                                <button onclick="changeDelLink('/greeneries/<%= greenery._id %>/CO2/del')" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delModal">
+                                <button onclick="changeDelLink('/greenery/<%= greenery._id %>/CO2/del')" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delModal">
                                     <i class="fa-regular fa-trash-can"></i>
                                 </button>
                             </td>
@@ -70,7 +70,7 @@
                             <td><%= greenery.moistLowThreshold %> %</td>
                             <td><%= greenery.moistHighThreshold %> %</td>
                             <td style="width:30px;white-space: nowrap">
-                                <button onclick="changeDelLink('/greeneries/<%= greenery._id %>/moist/del')" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delModal">
+                                <button onclick="changeDelLink('/greenery/<%= greenery._id %>/moist/del')" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delModal">
                                     <i class="fa-regular fa-trash-can"></i>
                                 </button>
                             </td>

@@ -52,13 +52,13 @@ module.exports = function(app) {
     );
 
     app.get(
-        '/sensorboxes/:sensorboxid/del',
+        '/sensorbox/:sensorboxid/del',
         authMW(objRepo),
         delSensorboxMW(objRepo, app.get('sensorboxRepo'))
     );
 
     app.get(
-        '/sensorboxes/:sensorboxid',
+        '/sensorbox/:sensorboxid',
         authMW(objRepo),
         getLogeedInUserMW(objRepo),
         getSensorboxMW(objRepo),
@@ -66,20 +66,20 @@ module.exports = function(app) {
     );
 
     app.get(
-        '/greeneries/:greeneryid/:constraint/del',
+        '/greenery/:greeneryid/:constraint/del',
         authMW(objRepo),
         getGreeneryMW(objRepo),
         delGreeneryConstraintMW()
     );
 
     app.get(
-        '/greeneries/:greeneryid/del',
+        '/greenery/:greeneryid/del',
         authMW(objRepo),
         delGreeneryMW(objRepo)
     );
 
     app.use(
-        '/greeneries/:greeneryid',
+        '/greenery/:greeneryid',
         authMW(objRepo),
         getLogeedInUserMW(objRepo),
         getGreeneryMW(objRepo),
@@ -97,7 +97,7 @@ module.exports = function(app) {
     );
 
     app.get(
-        '/users/:userid/del',
+        '/user/:userid/del',
         authMW(objRepo),
         delUserMW(objRepo),
     );
