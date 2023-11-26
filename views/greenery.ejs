@@ -2,10 +2,22 @@
 <%- include('navbar') -%>
 <div class="container">
     <div class="row">
-        <div class="col-md-8 offset-md-2">
-            <h1 class="mb-4 mt-3 text-center">
+        <div class="col-md-6 offset-md-2 text-start">
+            <h1 class="mb-4 mt-3">
                 <%= greenery.name %>
             </h1>
+        </div>
+        <div class="col-md-2 text-end">
+            <button onclick="changeDelLink('/greeneries/<%= greenery._id %>/del')" type="button" class="btn btn-danger mt-4" data-bs-toggle="modal" data-bs-target="#delModal">
+                Delete
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <% if (typeof deleteError !== 'undefined') { %>
+                <div class="alert alert-danger"><%= deleteError %></div>
+            <% } %>
             <table class="table table-striped table-bordered border-success">
                 <thead>
                     <tr>
@@ -121,4 +133,5 @@
     changeUnitLabel(s.options[s.selectedIndex].dataset.unit);
 </script>
 <%- include('allowcustomvalue') -%>
+<%- include('delmodal') -%>
 <%- include('footer') -%>

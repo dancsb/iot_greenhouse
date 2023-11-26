@@ -11,6 +11,7 @@ const getUserMW = require('../middleware/user/getUserMW');
 const getUsersMW = require('../middleware/user/getUsersMW');
 
 const saveGreeneryMW = require('../middleware/greenery/saveGreeneryMW');
+const delGreeneryMW = require('../middleware/greenery/delGreeneryMW');
 const getGreeneryMW = require('../middleware/greenery/getGreeneryMW');
 const getGreeneriesMW = require('../middleware/greenery/getGreeneriesMW');
 
@@ -52,7 +53,7 @@ module.exports = function(app) {
     app.get(
         '/sensorboxes/:sensorboxid/del',
         authMW(objRepo),
-        delSensorboxMW(objRepo, app.get('sensorboxRepo')),
+        delSensorboxMW(objRepo, app.get('sensorboxRepo'))
     );
 
     app.get(
@@ -61,6 +62,12 @@ module.exports = function(app) {
         getLogeedInUserMW(objRepo),
         getSensorboxMW(objRepo),
         renderMW('sensorbox')
+    );
+
+    app.get(
+        '/greeneries/:greeneryid/del',
+        authMW(objRepo),
+        delGreeneryMW(objRepo)
     );
 
     app.use(
