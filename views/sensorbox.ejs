@@ -40,6 +40,20 @@
             </div>
         </div>
     </dic>
+    <div class="row">
+        <div class="col-md-12 border border-success rounded-4">
+            <h3 class="mb-4 mt-3">
+                Recent logs
+            </h3>
+            <ul class="mt-4 text-start">
+                <% logs.forEach(function(log){ %>
+                    <li>
+                        <%= log.date.toLocaleString() %> <%= log.action %>
+                    </li>
+                <% }); %>
+            </ul>
+        </div>
+    </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script src="https://unpkg.com/mqtt@5.2.1/dist/mqtt.js"></script>

@@ -32,7 +32,7 @@ module.exports = function (objectrepository, sensorboxRepo) {
 
         res.locals.sensorbox.save()
         .then(() => {
-            sensorboxRepo.find(entry => entry.serialNumber === res.locals.sensorbox.serialNumber && (entry.acknowledged = true));
+            sensorboxRepo.find(entry => entry.serialNumber === res.locals.sensorbox.serialNumber && (entry.greenery = res.locals.sensorbox._greenery));
             return res.redirect('/dashboard');
         })
         .catch(err => {

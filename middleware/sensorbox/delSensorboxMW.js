@@ -9,7 +9,7 @@ module.exports = function (objectrepository, sensorboxRepo) {
             serialNumber: req.params.sensorboxid
         })
         .then(() => {
-            sensorboxRepo.find(entry => entry.serialNumber === req.params.sensorboxid && (entry.acknowledged = false));
+            sensorboxRepo.find(entry => entry.serialNumber === req.params.sensorboxid && (entry.greenery = null));
             return res.redirect('/dashboard');
         })
         .catch(err => {

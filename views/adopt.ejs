@@ -13,9 +13,9 @@
                             <label class="form-label"><h4>Detected sensorboxes</h4></label>
                         </div>
                         <div class="col-md-7">
-                            <select class="form-select" id="sensorbox" name="sensorbox" <%= (sensorboxRepo.filter(entry => !entry.acknowledged).length == 0) ? 'disabled' : '' %>>
+                            <select class="form-select" id="sensorbox" name="sensorbox" <%= (sensorboxRepo.filter(entry => !entry.greenery).length == 0) ? 'disabled' : '' %>>
                                 <% sensorboxRepo.forEach(function(sensorbox){ %>
-                                    <% if (!sensorbox.acknowledged) { %>
+                                    <% if (!sensorbox.greenery) { %>
                                         <option value="<%= sensorbox.serialNumber %>">Sensorbox #<%= sensorbox.serialNumber %></option>
                                     <% } %>
                                 <% }); %>

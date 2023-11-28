@@ -44,15 +44,11 @@
                         </div>
                         <div class="col-md-4">
                             <ul class="mt-4 text-start border border-success rounded-4">
-                                <li>
-                                    2023.10.08. 12:35 watering
-                                </li>
-                                <li>
-                                    2023.10.07. 04:23 heating
-                                </li>
-                                <li>
-                                    2023.10.02. 14:55 venting
-                                </li>
+                                <% logs.forEach(function(sensorboxLogs){ if (sensorboxLogs.serialNumber == sensorbox.serialNumber) { sensorboxLogs.recentLogs.forEach((log) => { %>
+                                    <li>
+                                        <%= log.date.toLocaleString() %> <%= log.action %>
+                                    </li>
+                                <% }); } }); %>
                             </ul>
                         </div>
                     </div>

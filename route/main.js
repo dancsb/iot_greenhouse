@@ -21,15 +21,20 @@ const delSensorboxMW = require('../middleware/sensorbox/delSensorboxMW');
 const getSensorboxMW = require('../middleware/sensorbox/getSensorboxMW');
 const getSensorboxesMW = require('../middleware/sensorbox/getSensorboxesMW');
 
+const getLogsMW = require('../middleware/log/getLogsMW');
+const getLogsForSensorboxMW = require('../middleware/log/getLogsForSensorboxMW');
+
 const UserModel = require('../models/user');
 const GreeneryModel = require('../models/greenery');
 const SensorboxModel = require('../models/sensorbox');
+const LogModel = require('../models/log');
 
 module.exports = function(app) {
     const objRepo = {
         UserModel: UserModel,
         GreeneryModel: GreeneryModel,
-        SensorboxModel: SensorboxModel
+        SensorboxModel: SensorboxModel,
+        LogModel: LogModel
     };
 
     app.get(
@@ -37,6 +42,7 @@ module.exports = function(app) {
         authMW(objRepo),
         getLogeedInUserMW(objRepo),
         getSensorboxesMW(objRepo),
+        getLogsMW(objRepo),
         renderMW('dashboard')
     );
 
@@ -62,6 +68,7 @@ module.exports = function(app) {
         authMW(objRepo),
         getLogeedInUserMW(objRepo),
         getSensorboxMW(objRepo),
+        getLogsForSensorboxMW(objRepo),
         renderMW('sensorbox')
     );
 
@@ -115,6 +122,7 @@ module.exports = function(app) {
         '/logs',
         authMW(objRepo),
         getLogeedInUserMW(objRepo),
+        getLogsMW(objRepo),
         renderMW('logs')
     );
 
