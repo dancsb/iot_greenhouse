@@ -46,7 +46,7 @@
                             <ul class="mt-4 text-start border border-success rounded-4">
                                 <% logs.forEach(function(sensorboxLogs){ if (sensorboxLogs.serialNumber == sensorbox.serialNumber) { sensorboxLogs.recentLogs.forEach((log) => { %>
                                     <li>
-                                        <%= log.date.toLocaleString() %> <%= log.action %>
+                                        [<%= log.date.getFullYear() %>.<%= (log.date.getMonth()+1 > 9) ? log.date.getMonth()+1 : "0" + (log.date.getMonth()+1) %>.<%= (log.date.getDate() > 9) ? log.date.getDate() : "0" + log.date.getDate() %>. <%= (log.date.getHours() > 9) ? log.date.getHours() : "0" + log.date.getHours() %>:<%= (log.date.getMinutes() > 9) ? log.date.getMinutes() : "0" + log.date.getMinutes() %>] <%= log.action %>
                                     </li>
                                 <% }); } }); %>
                             </ul>
